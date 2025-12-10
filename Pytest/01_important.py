@@ -65,8 +65,8 @@ def test_put_reuest(): #func 3
     }
 
     json_payload = {
-        "firstname": "Damini",
-        "lastname": "Sinha",
+        "firstname": "Ankit",
+        "lastname": "Kumar",
         "totalprice": 111,
         "depositpaid": True,
         "bookingdates": {
@@ -78,7 +78,7 @@ def test_put_reuest(): #func 3
 
     response = requests.put(url=full_url_put, headers=headers, json=json_payload)
     assert response.status_code == 200
-    assert response.json()["firstname"] == "Damini"
+    assert response.json()["firstname"] == "Ankit"
     # assert response.json()["firstname"] == "Pramod"
     assert response.json()["lastname"] == "Sinha"
     print(response.json()["firstname"])
