@@ -23,23 +23,6 @@ def test_put_2(create_token, create_booking_id, read_excel_file):
 
 
 
-import pytest
-
-@pytest.fixture()
-def create_token():
-    return "abc"
-
-@pytest.fixture()
-def create_booking_id():
-    return 123
-
-def test_update_req_1(create_token, create_booking_id):
-    print("Token ->", create_token)
-    print("Booking ID -> ", create_booking_id)
-
-
-
-
 import allure  # pip install allure
 import pytest  # pip instal pytest
 import requests  # pip install requests
