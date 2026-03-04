@@ -3,7 +3,6 @@ import requests
 from dotenv import load_dotenv
 import os
 
-
 @pytest.fixture()
 def create_token():
     load_dotenv()
@@ -17,11 +16,12 @@ def create_token():
         "password": password
     }
     response = requests.post(url=url, headers=headers, json=json_payload)
-
     response.raise_for_status()  # raises error if status != 200
     token = response.json().get("token")
     assert response.json()[username]=="admin"
     return token
+# Creating Token....
+# Token -> abc123xyz
 
 @pytest.fixture()
 def create_booking_id():
