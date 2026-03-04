@@ -15,6 +15,7 @@ iii. cmd → `npm -g i allure-commandline`
 - it will give you url on terminal in pycharm
 - click this url you can see report
 
+example: 
 ```python
 import pytest
 import allure
