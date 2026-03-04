@@ -2,9 +2,9 @@
 
 - install required commands :
    Install Allure Commandline
-       i. Node JS – [https://nodejs.org/en/download/prebuilt-installer](https://nodejs.org/en/download/prebuilt-installer)
-       ii. cmd → `node --version`
-       iii. cmd → `npm -g i allure-commandline`
+--       i. Node JS – [https://nodejs.org/en/download/prebuilt-installer](https://nodejs.org/en/download/prebuilt-installer)
+--       ii. cmd → `node --version`
+--       iii. cmd → `npm -g i allure-commandline`
             iwr -useb get.scoop.sh | iex scoop install allure
 
 - in terminal –> pip install allure-pytest
