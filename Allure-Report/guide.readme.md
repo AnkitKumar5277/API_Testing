@@ -27,6 +27,7 @@ def test_create_booking_negative_2():
 @pytest.mark.smoke
 def test_method4():
     print("this is pytest")
-    assert 1+1 == 0+2'''
+    assert 1+1 == 0+2
+'''
 
 
