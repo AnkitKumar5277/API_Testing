@@ -17,11 +17,6 @@ xObject = {
     age : 99
 }
 
-// json - {
-//     "name" : "ankit",
-//     "age":31
-// };
-
 console.log(10<10);
 console.log(10>10);
 console.log(10==10);
@@ -51,16 +46,13 @@ greet()
 
 var response = '{"name" : "Pramod","age" : 30,"cars" : ["Audi","BMW","I10"]}';
 
-
 var parseResponseJS = JSON.parse(response)
 console.log(parseResonJS["name"])
 
 var parseResponseJS = JSON.parse(response)
 
-
 console.log(parseResponseJS["name"])
 console.log(parseResponseJS["age"])
-
 
 // JS Object -> JSON
 
@@ -69,10 +61,8 @@ var jsObject = {
   age : 89
 }
 
-
 var JSONStr = JSON.stringify(jsObject)
 console.log(JSONStr)
-
 
 var xArray = ["apple","organe","bananana"]
 console.log(xArray[0])
