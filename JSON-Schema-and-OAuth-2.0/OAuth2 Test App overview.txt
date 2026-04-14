@@ -1,0 +1,131 @@
+🧠 Step 0: Understand OAuth 2.0 in Simple Words
+
+Think of OAuth 2.0 like this:
+
+"You want to access your GitHub profile using another app (like Postman) without giving your password. So GitHub gives Postman a temporary key (access token) after confirming it’s really you."
+
+OAuth 2.0 Main Players
+Role	Example
+Client (App)	Postman (the tool requesting access)
+Resource Owner	You (GitHub user)
+Authorization Server	GitHub’s login system
+Resource Server	GitHub’s API (stores user data)
+🪜 Step 1: Register an OAuth App on GitHub
+
+This step is like telling GitHub:
+
+“Hey, I’m creating an app that wants to access users’ data safely using OAuth.”
+
+How to Do It:
+
+Go to 👉 https://github.com/settings/developers
+
+Click "New OAuth App"
+
+Fill in:
+
+Application name: OAuth2 Test App
+
+Homepage URL: https://example.com
+(Just any dummy URL)
+
+Authorization callback URL:
+🔗 https://oauth.pstmn.io/v1/callback
+(This is Postman’s special redirect URL where tokens will return)
+
+Click Register application
+
+You’ll get:
+
+Client ID → like your App’s username
+
+Client Secret → like your App’s password
+
+Keep these safe — you’ll use them in Postman.
+
+🧭 Step 2: Set Up OAuth 2.0 in Postman
+
+Now let’s configure Postman to use that Client ID and Secret.
+
+Steps:
+
+Open Postman
+
+Create a New Request → Name it “GitHub OAuth2 Test”
+
+Go to the Authorization tab
+
+In Type, select OAuth 2.0
+
+Click Get New Access Token
+
+⚙️ Step 3: Fill in OAuth Details in Postman
+Field	What it means	Value
+Token Name	Just a label for you	GitHub OAuth
+Grant Type	Type of OAuth flow	Authorization Code
+Callback URL	Where GitHub sends the token	https://oauth.pstmn.io/v1/callback
+Auth URL	GitHub’s login page	https://github.com/login/oauth/authorize
+Access Token URL	GitHub’s token generator	https://github.com/login/oauth/access_token
+Client ID	Your App’s ID	(from GitHub app)
+Client Secret	App’s password	(from GitHub app)
+Scope	Permission level	read:user
+Client Authentication	How Postman sends credentials	Send as Basic Auth Header
+
+✅ Click Get New Access Token
+
+🔑 Step 4: Authorize and Receive Token
+
+Postman opens a new browser window
+
+GitHub asks:
+
+“Do you want to give access to OAuth2 Test App?”
+
+Click Authorize
+
+GitHub redirects back to Postman automatically
+
+Postman shows a popup with your Access Token
+
+Click Use Token ✅
+Now Postman will use that token for API calls.
+
+🔍 Step 5: Call the GitHub API (Using Token)
+
+Now we’ll actually test it.
+
+In Postman, choose:
+
+Method: GET
+
+URL: https://api.github.com/user
+
+In Authorization tab, choose:
+
+Type: Bearer Token
+
+Token: (auto-filled from Step 4)
+
+Click Send
+
+✅ Result:
+You’ll see a JSON response like:
+
+{
+  "login": "yourusername",
+  "id": 123456,
+  "node_id": "MDQ6VXNlcjE2ODk4NTI=",
+  "avatar_url": "https://avatars.githubusercontent.com/u/123456?v=4",
+  "url": "https://api.github.com/users/yourusername"
+}
+
+
+🎉 That’s your GitHub profile data — fetched using OAuth 2.0 authorization!
+
+🧩 Behind the Scenes (What Happened Technically)
+Step	Action	Behind the Scene
+1	You clicked “Get Token”	Postman redirects you to GitHub Login
+2	You logged in	GitHub asks for consent
+3	You clicked “Authorize”	GitHub sends an Authorization Code to Postman
+4	Postman sends that code + secret to GitHub	GitHub returns an Access Token
+5	You used that token to call /user API	GitHub verifies it and sends data
